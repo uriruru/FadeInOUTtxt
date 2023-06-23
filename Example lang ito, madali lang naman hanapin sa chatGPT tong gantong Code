@@ -1,0 +1,69 @@
+              <span id="changingText" class="changing" style="color: #1364b6;">Programming👨🏻‍💻</span>
+
+              <style>
+                .changing {
+                  position: relative;
+                  display: inline-block;
+                }
+              
+                @keyframes fadeOut {
+                  0% {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+              
+                  50% {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                  }
+              
+                  100% {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                  }
+                }
+              
+                @keyframes fadeIn {
+                  0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                  }
+              
+                  50% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                  }
+              
+                  100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+              </style>
+              
+              <script>
+                const words = ["Guitar Playing🎵", "Designing🎨", "Video Editing🖥️", "Drone Piloting🚁", "Videography📹", "Programming👨🏻‍💻"];
+                let currentWordIndex = 0;
+                const changingText = document.getElementById("changingText");
+              
+                function changeWord() {
+                  changingText.classList.remove("changing");
+              
+                  setTimeout(() => {
+                    changingText.style.animation = "fadeOut 0.5s ease-in-out forwards";
+              
+                    setTimeout(() => {
+                      changingText.textContent = words[currentWordIndex];
+                      changingText.style.animation = "fadeIn 0.5s ease-in-out forwards";
+              
+                      currentWordIndex++;
+                      if (currentWordIndex === words.length) {
+                        currentWordIndex = 0;
+                      }
+                    }, 500); // Wait for the fadeOut animation to complete (adjust this value accordingly)
+                  }, 2000); // Wait before starting the animation (adjust this value accordingly)
+                }
+              
+                // Change the word every 4 seconds (4000 milliseconds)
+                setInterval(changeWord, 4000);
+              </script>
